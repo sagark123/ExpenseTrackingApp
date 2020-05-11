@@ -1,0 +1,32 @@
+package com.example.demo.model;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor
+@Data
+@Table(name="expense")
+public class Expense {
+	
+	@Id
+	private int id;
+	
+	private String expensedate;
+	
+	private String descrip;
+	
+	
+	@ManyToOne
+	private Category category;
+	
+	@ManyToOne
+	private User user;
+
+}

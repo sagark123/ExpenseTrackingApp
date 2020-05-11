@@ -1,0 +1,82 @@
+package com.example.demo.model;
+
+import java.time.Instant;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name="expense")
+public class Expense {
+	
+	@Id
+	private int id;
+	
+	private String expensedate;
+	
+	private String descrip;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Expense [id=" + id + ", expensedate=" + expensedate + ", descrip=" + descrip + ", category=" + category
+				+ ", user=" + user + "]";
+	}
+
+	public String getExpensedate() {
+		return expensedate;
+	}
+
+	public void setExpensedate(String expensedate) {
+		this.expensedate = expensedate;
+	}
+
+	public String getDescrip() {
+		return descrip;
+	}
+
+	public void setDescrip(String descrip) {
+		this.descrip = descrip;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
+	
+	@ManyToOne
+	private Category category;
+	
+	@ManyToOne
+	private User user;
+
+}

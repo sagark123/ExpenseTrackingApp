@@ -1,0 +1,97 @@
+package com.example.demo.model;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+@Entity
+@Table(name="expense")
+public class Expense {
+
+	@Id
+	private int id;
+	
+	private Long expenseamount;
+	
+	private String description;
+	
+	private String location;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Long getExpenseamount() {
+		return expenseamount;
+	}
+
+	public void setExpenseamount(Long expenseamount) {
+		this.expenseamount = expenseamount;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Expense [id=" + id + ", expenseamount=" + expenseamount + ", description=" + description + ", location="
+				+ location + ", category=" + category + ", user=" + user + "]";
+	}
+
+	
+
+	public Expense() {
+		super();
+	}
+
+
+
+	@ManyToOne
+	private Category category;
+	
+	@JsonIgnore
+	@ManyToOne
+	private User user;
+	
+
+}
